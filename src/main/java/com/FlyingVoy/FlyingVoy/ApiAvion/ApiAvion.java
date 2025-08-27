@@ -1,5 +1,4 @@
-package com.FlyingVoy.FlyingVoy;
-
+package com.FlyingVoy.FlyingVoy.ApiAvion;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
@@ -8,7 +7,6 @@ import org.springframework.web.util.UriComponentsBuilder;
 
 @Service
 public class ApiAvion {
-
 
     @Value("${api.key}")
     private String apiKey;
@@ -28,7 +26,4 @@ public class ApiAvion {
 
         return restTemplate.getForObject(url, String.class);
     }
-
-
-
 }

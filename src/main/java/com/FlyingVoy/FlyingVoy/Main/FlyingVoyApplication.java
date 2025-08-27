@@ -1,4 +1,4 @@
-package com.FlyingVoy.FlyingVoy;
+package com.FlyingVoy.FlyingVoy.Main;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
