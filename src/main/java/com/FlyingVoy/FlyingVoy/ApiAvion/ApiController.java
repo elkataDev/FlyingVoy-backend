@@ -1,4 +1,4 @@
-package com.FlyingVoy.FlyingVoy;
+package com.FlyingVoy.FlyingVoy.ApiAvion;
 
 
 import org.springframework.web.bind.annotation.GetMapping;
@@ -6,14 +6,14 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-public class Controller {
+public class ApiController {
 
 
     private final ApiAvion apiAvion;
 
 
 
-    public Controller(ApiAvion apiAvion) {
+    public ApiController(ApiAvion apiAvion) {
         this.apiAvion = apiAvion;
     }
 
