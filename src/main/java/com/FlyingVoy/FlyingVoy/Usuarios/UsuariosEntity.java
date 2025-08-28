@@ -32,7 +32,10 @@ public class UsuariosEntity {
     @Column(name = "ultimoLogin")
     private Timestamp ultimoLogin;
 
-//Mirar valoraciones si poner en usuarios o en la relacion
+//Esto solo permite que un usuario haga una UNICA valoracion
 //    @Lob
 //    @Column(columnDefinition = "Text", name = "Valoracion")
+
+    //NOTA SI QUEREMOS QUE LOS USUARIOS PUEDAN REALIZAR MAS VALORACIONES
+    //Se debe crear otra entidad llamada Valoraciones y que este relacionada con Usuarios
 }
