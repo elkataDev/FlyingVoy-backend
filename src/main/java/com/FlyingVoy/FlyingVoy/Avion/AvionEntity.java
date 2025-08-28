@@ -43,4 +43,10 @@ public class AvionEntity {
 
     @Column(name = "Terminal_Destino", nullable = false)
     private int terminalDestino; //arrival.terminal
+
+    @Column(name = "Aeropuerto_Salida",nullable = false)
+    private String aeropuertoSalida; //departure.airport
+
+    @Column(name = "Aeropuerto_Destino",nullable = false)
+    private String aeropuertoDestino; //arrival.airport
 }
