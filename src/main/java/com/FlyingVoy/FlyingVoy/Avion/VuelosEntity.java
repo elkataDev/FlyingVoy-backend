@@ -1,17 +1,17 @@
 package com.FlyingVoy.FlyingVoy.Avion;
 
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import java.time.LocalDate;
 import java.time.OffsetDateTime;
 
-@Getter
-@Setter
+@Data
 @Entity
-@Table(name = "aviones")
-public class AvionEntity {
+@AllArgsConstructor
+@NoArgsConstructor
+@Table(name = "Vuelos")
+public class VuelosEntity {
 
     @Id
     @Column(name = "vuelo", nullable = false, unique = true)
