@@ -1,12 +1,19 @@
 package com.FlyingVoy.FlyingVoy.Usuarios;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.sql.Timestamp;
 import java.util.Date;
 
 
 @Entity
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+@Table(name = "Usuarios")
 public class UsuariosEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
