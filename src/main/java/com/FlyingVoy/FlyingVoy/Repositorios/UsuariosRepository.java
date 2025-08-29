@@ -1,14 +1,12 @@
-package com.FlyingVoy.FlyingVoy.Usuarios;
+package com.FlyingVoy.FlyingVoy.Repositorios;
 
+import com.FlyingVoy.FlyingVoy.Entidades.UsuariosEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
-import java.sql.Timestamp;
-import java.util.Optional;
-import java.util.List;
 
 @Repository
 public interface UsuariosRepository extends JpaRepository<UsuariosEntity, Long> {
-
+/*
     // Buscar usuario por email
     Optional<UsuariosEntity> findByEmail(String email);
 
@@ -41,4 +39,6 @@ public interface UsuariosRepository extends JpaRepository<UsuariosEntity, Long> 
 
     // Verificar si existe un teléfono
     boolean existsByTelefono(String telefono);
+
+ */
 }
