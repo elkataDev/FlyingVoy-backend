@@ -23,7 +23,7 @@ public class ReservasEntity {
     @JoinColumn(
             name = "id_usuario",
             nullable = false,
-            foreignKey = @ForeignKey(name = "fk_id_usuario")
+            foreignKey = @ForeignKey(name = "fk_reserva_usuario")
     )
     private UsuariosEntity usuariosEntity;
 
@@ -31,7 +31,7 @@ public class ReservasEntity {
     @JoinColumn(
             name = "id_vuelo",
             nullable = false,
-            foreignKey = @ForeignKey(name = "fk_id_vuelo")
+            foreignKey = @ForeignKey(name = "fk_reserva_vuelo")
     )
 
     private VuelosEntity vuelosEntity;

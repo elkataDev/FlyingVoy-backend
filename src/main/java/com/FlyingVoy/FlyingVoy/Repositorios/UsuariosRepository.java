@@ -2,43 +2,34 @@ package com.FlyingVoy.FlyingVoy.Repositorios;
 
 import com.FlyingVoy.FlyingVoy.Entidades.UsuariosEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
+import java.sql.Timestamp;
+import java.util.Date;
+import java.util.Optional;
+import java.util.List;
 
 @Repository
 public interface UsuariosRepository extends JpaRepository<UsuariosEntity, Long> {
-/*
-    // Buscar usuario por email
+
+    // Buscar usuarios por coincidencia parcial en nombre
+    @Query("SELECT u FROM UsuariosEntity u WHERE u.nombre LIKE %?1%")
+    List<UsuariosEntity> buscarPorNombre(String keyword);
+
+    // Búsquedas directas por campos (Spring Data JPA lo hace automáticamente)
     Optional<UsuariosEntity> findByEmail(String email);
 
-    // Buscar usuario por nombre
-    List<UsuariosEntity> findByNombre(String nombre);
-
-    // Buscar usuario por teléfono
     Optional<UsuariosEntity> findByTelefono(String telefono);
 
-    // Buscar fecha de registro por email (confirma la fecha de registro)
-    Optional<UsuariosEntity> findByFechaRegistro(String email);
+    Optional<UsuariosEntity> findByNombre(String nombre);
 
-    // Buscar fecha de registro por ID
-    Optional<UsuariosEntity> findByFechaRegistro(long id);
+    // Fechas importantes
+    Optional<UsuariosEntity> findById(Long id);
 
-    // Buscar nombre por ID
-    Optional<UsuariosEntity> findByNombre(long id);
+    // Si quieres devolver directamente solo el campo (opcional), puedes mantener las queries personalizadas:
+    @Query("SELECT u.fechaRegistro FROM UsuariosEntity u WHERE u.email = ?1")
+    Optional<Date> findFechaRegistroByEmail(String email);
 
-    // Buscar email por ID
-    Optional<UsuariosEntity> findByEmail(long id);
-
-    // Buscar telefono por ID
-    Optional<UsuariosEntity> findByTelefono(long id);
-
-    // Buscar ultimo registro por ID
-    Optional<UsuariosEntity> findByUltimoRegistro(Timestamp ultimoLogin);
-
-    // Verificar si existe un email (para validar registros)
-    boolean existsByEmail(String email);
-
-    // Verificar si existe un teléfono
-    boolean existsByTelefono(String telefono);
-
- */
+    @Query("SELECT u.ultimoLogin FROM UsuariosEntity u WHERE u.email = ?1")
+    Optional<Timestamp> findUltimoLoginByEmail(String email);
 }
