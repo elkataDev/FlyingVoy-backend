@@ -2,37 +2,48 @@ package com.FlyingVoy.FlyingVoy.Repositorios;
 
 import com.FlyingVoy.FlyingVoy.Entidades.VuelosEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
-@Repository
-public interface VueloRepository extends JpaRepository<VuelosEntity, String> {
-/*
-    // Buscar vuelos por compañía
-    List<VuelosEntity> findByCompania(String compania);
+import java.time.LocalDate;
+import java.time.OffsetDateTime;
+import java.util.List;
+import java.util.Optional;
 
-    // Buscar vuelos por fecha exacta
+@Repository
+public interface VueloRepository extends JpaRepository<VuelosEntity, Long> {
+
+    // Búsqueda general por coincidencia parcial de compañía
+    @Query("SELECT v FROM VuelosEntity v WHERE v.compania LIKE %?1%")
+    List<VuelosEntity> buscarPorCompania(String keyword);
+
+    // Buscar por ID del vuelo (el ID principal)
+    Optional<VuelosEntity> findById(Long id_Vuelo);
+
+    // Buscar vuelos por aeropuerto de salida o destino
+    List<VuelosEntity> findByAeropuertoSalida(String aeropuertoSalida);
+
+    List<VuelosEntity> findByAeropuertoDestino(String aeropuertoDestino);
+
+    // Buscar vuelos por fecha
     List<VuelosEntity> findByFechaVuelo(LocalDate fechaVuelo);
 
-    // Buscar vuelos por código de salida
-    List<VuelosEntity> findBySalida(String salida);
+    // Consultas optimizadas para devolver solo un campo
+    @Query("SELECT v.fechaVuelo FROM VuelosEntity v WHERE v.id_Vuelo = ?1")
+    Optional<LocalDate> findFechaVueloById(Long id_Vuelo);
 
-    // Buscar vuelos por código de destino
-    List<VuelosEntity> findByDestino(String destino);
+    @Query("SELECT v.horaProgramadaSalida FROM VuelosEntity v WHERE v.id_Vuelo = ?1")
+    Optional<OffsetDateTime> findHoraSalidaById(Long id_Vuelo);
 
-    // Buscar por compañía y fecha de vuelo
-    List<VuelosEntity> findByCompaniaAndVuelo(String compania, LocalDate fechaVuelo);
+    @Query("SELECT v.horaProgramadaDestino FROM VuelosEntity v WHERE v.id_Vuelo = ?1")
+    Optional<OffsetDateTime> findHoraLlegadaById(Long id_Vuelo);
 
-    //Buscar Vuelos entre dos fechas
-    List<VuelosEntity> findByFechaVueloBetween(LocalDate fechaInicio, LocalDate fechaFin);
+    @Query("SELECT v.compania FROM VuelosEntity v WHERE v.id_Vuelo = ?1")
+    Optional<String> findCompaniaById(Long id_Vuelo);
 
-    // Buscar vuelos por compañia ordenados por hora de salida Ascendente
-    List<VuelosEntity> findByCompaniaOrderByHoraProgramadaSalidaAsc(String compania);
+    @Query("SELECT v.aeropuertoSalida FROM VuelosEntity v WHERE v.id_Vuelo = ?1")
+    Optional<String> findAeropuertoSalidaById(Long id_Vuelo);
 
-    // Buscar vuelos por compañia ordenados por hora de salida Descendente
-    List<VuelosEntity> findByCompaniaOrderByHoraProgramadaSalidaDesc(String compania);
-
-    // Buscar vuelos que salgan de un aeropuerto y llegen a otro
-    List<VuelosEntity> findBySalidaAndDestino(String salida, String destino);
-
- */
+    @Query("SELECT v.aeropuertoDestino FROM VuelosEntity v WHERE v.id_Vuelo = ?1")
+    Optional<String> findAeropuertoDestinoById(Long id_Vuelo);
 }
