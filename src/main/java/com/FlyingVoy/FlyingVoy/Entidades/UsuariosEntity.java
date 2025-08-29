@@ -1,4 +1,4 @@
-package com.FlyingVoy.FlyingVoy.Usuarios;
+package com.FlyingVoy.FlyingVoy.Entidades;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -7,6 +7,8 @@ import lombok.NoArgsConstructor;
 
 import java.sql.Timestamp;
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 
 @Entity
@@ -15,9 +17,10 @@ import java.util.Date;
 @NoArgsConstructor
 @Table(name = "Usuarios")
 public class UsuariosEntity {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private long id_usuario;
 
     @Column(name = "Nombre", nullable = false)
     private String nombre;
@@ -38,6 +41,16 @@ public class UsuariosEntity {
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "ultimoLogin")
     private Timestamp ultimoLogin;
+
+
+    @OneToMany(mappedBy = "usuariosEntity")
+    private Set<ReservasEntity> reservasEntities ;
+
+    @OneToMany(mappedBy = "usuariosEntity")
+    private Set<ValoracionesEntity> valoracionesEntities ;
+
+
+
 
 //Esto solo permite que un usuario haga una UNICA valoracion
 //    @Lob

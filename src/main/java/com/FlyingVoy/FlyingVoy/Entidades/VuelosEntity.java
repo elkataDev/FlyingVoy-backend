@@ -1,10 +1,12 @@
-package com.FlyingVoy.FlyingVoy.Avion;
+package com.FlyingVoy.FlyingVoy.Entidades;
 
 import jakarta.persistence.*;
 import lombok.*;
 
 import java.time.LocalDate;
 import java.time.OffsetDateTime;
+import java.util.HashSet;
+import java.util.Set;
 
 @Data
 @Entity
@@ -14,8 +16,8 @@ import java.time.OffsetDateTime;
 public class VuelosEntity {
 
     @Id
-    @Column(name = "vuelo", nullable = false, unique = true)
-    private String vuelo; // flight.number
+    @Column(name = "id_Vuelo", nullable = false, unique = true )
+    private Long id_Vuelo; // flight.number
 
     @Column(name = "modelo", nullable = false)
     private String modeloAvion; // aircraft.modelText
@@ -49,4 +51,9 @@ public class VuelosEntity {
 
     @Column(name = "Aeropuerto_Destino",nullable = false)
     private String aeropuertoDestino; //arrival.airport
+
+    @OneToMany(mappedBy = "vuelosEntity")
+    private Set<ReservasEntity> reservasEntities = new HashSet<>();
+
+
 }
