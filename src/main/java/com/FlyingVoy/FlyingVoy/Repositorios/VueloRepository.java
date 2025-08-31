@@ -11,14 +11,14 @@ import java.util.List;
 import java.util.Optional;
 
 @Repository
-public interface VueloRepository extends JpaRepository<VuelosEntity, Long> {
+public interface VueloRepository extends JpaRepository<VuelosEntity, String> {
 
     // Búsqueda general por coincidencia parcial de compañía
     @Query("SELECT v FROM VuelosEntity v WHERE v.compania LIKE %?1%")
     List<VuelosEntity> buscarPorCompania(String keyword);
 
     // Buscar por ID del vuelo (el ID principal)
-    Optional<VuelosEntity> findById(Long id_Vuelo);
+    Optional<VuelosEntity> findById(String id_Vuelo);
 
     // Buscar vuelos por aeropuerto de salida o destino
     List<VuelosEntity> findByAeropuertoSalida(String aeropuertoSalida);
@@ -32,12 +32,6 @@ public interface VueloRepository extends JpaRepository<VuelosEntity, Long> {
     @Query("SELECT v.fechaVuelo FROM VuelosEntity v WHERE v.id_Vuelo = ?1")
     Optional<LocalDate> findFechaVueloById(Long id_Vuelo);
 
-    @Query("SELECT v.horaProgramadaSalida FROM VuelosEntity v WHERE v.id_Vuelo = ?1")
-    Optional<OffsetDateTime> findHoraSalidaById(Long id_Vuelo);
-
-    @Query("SELECT v.horaProgramadaDestino FROM VuelosEntity v WHERE v.id_Vuelo = ?1")
-    Optional<OffsetDateTime> findHoraLlegadaById(Long id_Vuelo);
-
     @Query("SELECT v.compania FROM VuelosEntity v WHERE v.id_Vuelo = ?1")
     Optional<String> findCompaniaById(Long id_Vuelo);
 
@@ -46,4 +40,7 @@ public interface VueloRepository extends JpaRepository<VuelosEntity, Long> {
 
     @Query("SELECT v.aeropuertoDestino FROM VuelosEntity v WHERE v.id_Vuelo = ?1")
     Optional<String> findAeropuertoDestinoById(Long id_Vuelo);
+
+
+
 }
