@@ -52,10 +52,5 @@ public class UsuariosEntity {
 
 
 
-//Esto solo permite que un usuario haga una UNICA valoracion
-//    @Lob
-//    @Column(columnDefinition = "Text", name = "Valoracion")
 
-    //NOTA SI QUEREMOS QUE LOS USUARIOS PUEDAN REALIZAR MAS VALORACIONES
-    //Se debe crear otra entidad llamada Valoraciones y que este relacionada con Usuarios
 }

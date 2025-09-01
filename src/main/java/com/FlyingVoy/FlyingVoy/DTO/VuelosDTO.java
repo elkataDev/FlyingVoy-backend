@@ -5,7 +5,6 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
-import java.time.OffsetDateTime;
 
 @Data
 @AllArgsConstructor
@@ -18,8 +17,6 @@ public class VuelosDTO {
     private LocalDate fechaVuelo;
     private String salida;
     private String destino;
-    private OffsetDateTime horaProgramadaSalida;
-    private OffsetDateTime horaProgramadaDestino;
     private int terminalSalida;
     private int terminalDestino;
     private String aeropuertoSalida;
