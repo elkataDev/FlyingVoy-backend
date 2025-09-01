@@ -26,8 +26,8 @@ public class VueloMapper {
         dto.setDestino(flightData.getArrival().getIata());
 
 
-        dto.setTerminalSalida(parseTerminal(flightData.getDeparture().getTerminal()));
-        dto.setTerminalDestino(parseTerminal(flightData.getArrival().getTerminal()));
+        dto.setTerminalSalida(flightData.getDeparture().getTerminal());
+        dto.setTerminalDestino(flightData.getArrival().getTerminal());
 
         dto.setAeropuertoSalida(flightData.getDeparture().getAirport());
         dto.setAeropuertoDestino(flightData.getArrival().getAirport());
@@ -67,14 +67,5 @@ public class VueloMapper {
         dto.setAeropuertoDestino(vuelosEntity.getAeropuertoDestino());
 
         return dto;
-    }
-
-    private static int parseTerminal(String terminal) {
-        if (terminal == null) return 0; // valor por defecto
-        try {
-            return Integer.parseInt(terminal);
-        } catch (NumberFormatException e) {
-            return 0; // si es "A", "B", etc. devolvemos 0
-        }
     }
 }

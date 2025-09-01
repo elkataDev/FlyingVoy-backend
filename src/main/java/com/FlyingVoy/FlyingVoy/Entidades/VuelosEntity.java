@@ -35,10 +35,10 @@ public class VuelosEntity {
     private String destino; //arrival.iataCode
 
     @Column(name = "Terminal_Salida")
-    private int terminalSalida; //departure.terminal
+    private String terminalSalida; //departure.terminal
 
     @Column(name = "Terminal_Destino")
-    private int terminalDestino; //arrival.terminal
+    private String terminalDestino; //arrival.terminal
 
     @Column(name = "Aeropuerto_Salida")
     private String aeropuertoSalida; //departure.airport

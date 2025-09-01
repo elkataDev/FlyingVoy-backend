@@ -17,8 +17,8 @@ public class VuelosDTO {
     private LocalDate fechaVuelo;
     private String salida;
     private String destino;
-    private int terminalSalida;
-    private int terminalDestino;
+    private String terminalSalida;
+    private String terminalDestino;
     private String aeropuertoSalida;
     private String aeropuertoDestino;
 }
